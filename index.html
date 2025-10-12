@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -27,61 +27,37 @@
         }
     </script>
     <style>
-        /* Esconde todas as abas por padrão */
-        .tab-content {
-            display: none;
-        }
-        /* Mostra a aba ativa */
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display">
-
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div class="flex h-full grow flex-col">
             <header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-800 px-10 py-3 bg-white dark:bg-background-dark shadow-sm">
                 <div class="flex items-center gap-4">
                     <div class="size-8 text-primary">
-                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
-                        </svg>
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
                     </div>
-                    <h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Gestão de Fretes Vetore</h2>
-                </div>
-                <div class="flex flex-1 justify-end items-center gap-4">
-                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/a/ACg8ocL-Abfmsq4s-vVj82w-F_p4k_j3aZz3x-Y5e-8Y3dG9Xg=s96-c");'></div>
+                    <h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Gestão de Fretes</h2>
                 </div>
             </header>
 
             <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
                 <div class="max-w-7xl mx-auto">
-                    
                     <div class="border-b border-gray-200 dark:border-gray-700 mb-8">
                         <nav class="-mb-px flex space-x-8" aria-label="Tabs">
                             <button onclick="changeTab('dashboard')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-primary border-primary">Dashboard</button>
                             <button onclick="changeTab('shipments')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Todas as Solicitações</button>
-                            <button onclick="changeTab('new-shipment')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Novo Envio</button>
-                            <button onclick="changeTab('new-collection')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Nova Coleta</button>
                         </nav>
                     </div>
 
                     <div id="dashboard" class="tab-content active">
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900">
-                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total de Solicitações</p>
-                                <p id="total-solicitacoes" class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">...</p>
-                            </div>
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900">
-                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Cancelados</p>
-                                <p id="total-cancelados" class="text-4xl font-bold tracking-tight text-red-600 dark:text-red-500">...</p>
-                            </div>
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900">
-                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Não Iniciados</p>
-                                <p id="total-nao-iniciados" class="text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-500">...</p>
-                            </div>
+                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total de Solicitações</p><p id="total-solicitacoes" class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">...</p></div>
+                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Cancelados</p><p id="total-cancelados" class="text-4xl font-bold tracking-tight text-red-600 dark:text-red-500">...</p></div>
+                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Não Iniciados</p><p id="total-nao-iniciados" class="text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-500">...</p></div>
                         </div>
                     </div>
 
@@ -106,44 +82,20 @@
                             </div>
                         </div>
                     </div>
-
-                    <div id="new-shipment" class="tab-content">
-                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
-                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Novo Envio</h2>
-                            <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para criar um novo envio.</p>
-                            <div class="mt-8 text-center text-gray-500">(Aqui entraria o seu formulário completo para "Novo Envio")</div>
-                        </div>
-                    </div>
-
-                    <div id="new-collection" class="tab-content">
-                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
-                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Nova Coleta</h2>
-                            <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para agendar uma nova coleta.</p>
-                            <div class="mt-8 text-center text-gray-500">(Aqui entraria o seu formulário completo para "Nova Coleta")</div>
-                        </div>
-                    </div>
                 </div>
             </main>
         </div>
     </div>
 
     <script>
-        // COLE AQUI A URL DA SUA APLICAÇÃO WEB QUE VOCÊ COPIOU DO APPS SCRIPT
-        const apiUrl = 'https://script.google.com/macros/s/AKfycbyvjP_wEazB6FEKYmA26bXJTWebiQc0EOSt7zCQxDL_Ufu1TwRR5sNI8fJ9qpXVtdSR/exec';
+        // **PASSO FINAL:** COLE AQUI A URL DA SUA APLICAÇÃO WEB QUE VOCÊ COPIOU
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbwOVp8zzCSHCY2sxxIvzG6JJ3ZoOnOrSWVnD7y-ZUp0zq00WT0chjnRvYT9fHQ7zPHE/exec';
 
-        // --- LÓGICA PARA MUDANÇA DE ABAS ---
         const tabs = document.querySelectorAll('.tab-content');
         const buttons = document.querySelectorAll('.tab-button');
 
         function changeTab(tabId) {
-            tabs.forEach(tab => {
-                if (tab.id === tabId) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-            
+            tabs.forEach(tab => tab.id === tabId ? tab.classList.add('active') : tab.classList.remove('active'));
             buttons.forEach(button => {
                 if (button.getAttribute('onclick').includes(`'${tabId}'`)) {
                     button.classList.add('text-primary', 'border-primary');
@@ -155,23 +107,19 @@
             });
         }
 
-        // --- LÓGICA PARA CARREGAR DADOS DA PLANILHA ---
         function getStatusClass(status) {
             if (!status) return 'inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:text-gray-300';
-            
-            const statusClean = status.trim().replace(/\s+/g, '');
-            if (statusClean === 'Cancelado') return 'inline-flex items-center rounded-full bg-red-100 dark:bg-red-800 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-100';
-            if (statusClean === 'Finalizado') return 'inline-flex items-center rounded-full bg-green-100 dark:bg-green-800 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-100';
-            if (statusClean === 'Emexecução' || statusClean === 'Emprocesso') return 'inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-800 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-100';
-            return 'inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-800 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-100'; // para 'Não iniciada'
+            const statusClean = status.trim().toLowerCase().replace(/\s+/g, '');
+            if (statusClean === 'cancelado') return 'inline-flex items-center rounded-full bg-red-100 dark:bg-red-800 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-100';
+            if (statusClean === 'finalizado') return 'inline-flex items-center rounded-full bg-green-100 dark:bg-green-800 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-100';
+            if (statusClean.includes('execu') || statusClean.includes('processo')) return 'inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-800 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-100';
+            return 'inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-800 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-100';
         }
         
         async function carregarDados() {
             try {
                 const response = await fetch(apiUrl);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const fretes = await response.json();
 
                 const tabelaBody = document.querySelector('#tabela-fretes-body');
@@ -179,14 +127,12 @@
 
                 if (!fretes || fretes.length === 0 || (fretes.length === 1 && fretes[0].error)) {
                     tabelaBody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-gray-500">Nenhuma solicitação encontrada.</td></tr>';
-                    // Limpa os cartões se não houver dados
                     document.getElementById('total-solicitacoes').textContent = '0';
                     document.getElementById('total-cancelados').textContent = '0';
                     document.getElementById('total-nao-iniciados').textContent = '0';
                     return;
                 }
                 
-                // Preenche a tabela com os dados de cada frete
                 fretes.forEach(frete => {
                     const linhaHtml = `
                         <tr>
@@ -201,21 +147,16 @@
                     tabelaBody.innerHTML += linhaHtml;
                 });
                 
-                // Atualiza os cartões do dashboard de resumo, agora com .trim()
                 document.getElementById('total-solicitacoes').textContent = fretes.length;
-                document.getElementById('total-cancelados').textContent = fretes.filter(f => f.Status && f.Status.trim() === 'Cancelado').length;
-                document.getElementById('total-nao-iniciados').textContent = fretes.filter(f => f.Status && f.Status.trim() === 'Não iniciada').length;
+                document.getElementById('total-cancelados').textContent = fretes.filter(f => f.Status && f.Status.trim().toLowerCase() === 'cancelado').length;
+                document.getElementById('total-nao-iniciados').textContent = fretes.filter(f => f.Status && f.Status.trim().toLowerCase() === 'não iniciada').length;
 
             } catch (error) {
                 console.error('Erro ao carregar os dados:', error);
-                document.querySelector('#tabela-fretes-body').innerHTML = '<tr><td colspan="6" class="p-6 text-center text-red-500">Ocorreu um erro ao carregar os dados. Verifique a URL da API, as permissões e a consola do navegador (F12) para mais detalhes.</td></tr>';
+                document.querySelector('#tabela-fretes-body').innerHTML = '<tr><td colspan="6" class="p-6 text-center text-red-500">Ocorreu um erro ao carregar os dados. Verifique a URL da API, as permissões e a consola do navegador (F12).</td></tr>';
             }
         }
-
-        // Carrega os dados quando a página abre
         document.addEventListener('DOMContentLoaded', carregarDados);
     </script>
-
 </body>
 </html>
-

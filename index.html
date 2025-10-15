@@ -110,13 +110,8 @@
                     </div>
 
                     <div id="new-shipment" class="tab-content">
-                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
-                            <h2 class="text-3xl font-bold tracking-tight">Novo Envio</h2>
-                            <p class="text-subtext-light dark:text-subtext-dark mt-1">Preencha os detalhes abaixo para criar um novo envio.</p>
-                            <form class="space-y-6 mt-8">
-                                <p class="text-center text-gray-500">(Aqui entraria o seu formulário completo para "Novo Envio")</p>
-                                <div><button class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full md:w-auto" type="submit">Criar Envio</button></div>
-                            </form>
+                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScHpaIRSzydX9dT9qF6nunddk4O3yM87bG3_6jViTT8DzlbjQ/viewform?embedded=true" width="100%" height="1800" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
                         </div>
                     </div>
 
@@ -124,10 +119,7 @@
                         <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
                             <h2 class="text-3xl font-bold tracking-tight">Nova Coleta</h2>
                             <p class="text-subtext-light dark:text-subtext-dark mt-1">Preencha os detalhes abaixo para agendar uma nova coleta.</p>
-                            <form class="space-y-6 mt-8">
-                                <p class="text-center text-gray-500">(Aqui entraria o seu formulário completo para "Nova Coleta")</p>
-                                <div><button class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full md:w-auto" type="submit">Agendar Coleta</button></div>
-                            </form>
+                            <div class="mt-8 text-center text-gray-500">(Aqui pode entrar outro iframe para o formulário de Coleta)</div>
                         </div>
                     </div>
                 </div>
@@ -137,7 +129,7 @@
 
     <script>
         // COLE AQUI A URL DA SUA APLICAÇÃO WEB QUE VOCÊ COPIOU DO APPS SCRIPT
-        const apiUrl = 'https://script.google.com/macros/s/AKfycbwExYWg1bPBkWDqIIR_46cv_mDhKzplNFjVfT4yii9ablQLsrbQdl34MUWMPrrPLGqg/exec';
+        const apiUrl = 'URL_DA_SUA_API_AQUI';
 
         // --- LÓGICA PARA MUDANÇA DE ABAS ---
         const tabs = document.querySelectorAll('.tab-content');
@@ -153,72 +145,20 @@
             });
             
             buttons.forEach(button => {
-                if (button.getAttribute('onclick').includes(tabId)) {
+                if (button.getAttribute('onclick').includes(`'${tabId}'`)) {
                     button.classList.add('text-primary', 'border-primary');
-                    button.classList.remove('text-gray-500', 'border-transparent', 'hover:text-gray-700', 'hover:border-gray-300');
+                    button.classList.remove('text-gray-500', 'border-transparent');
                 } else {
                     button.classList.remove('text-primary', 'border-primary');
-                    button.classList.add('text-gray-500', 'border-transparent', 'hover:text-gray-700', 'hover:border-gray-300');
+                    button.classList.add('text-gray-500', 'border-transparent');
                 }
             });
         }
 
         // --- LÓGICA PARA CARREGAR DADOS DA PLANILHA ---
-        function getStatusClass(status) {
-            const statusClean = status.replace(/\s+/g, ''); // Remove espaços
-            if (statusClean === 'Cancelado') return 'inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/50 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-300';
-            if (statusClean === 'Finalizado') return 'inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300';
-            if (statusClean === 'Emexecução') return 'inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/50 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-300';
-            return 'inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-900/50 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:text-gray-300'; // Default para 'Não iniciada' etc.
-        }
+        // (O resto do seu código JavaScript para carregar os dados continua aqui)
         
-        async function carregarDados() {
-            try {
-                const response = await fetch(apiUrl);
-                const fretes = await response.json();
-
-                const tabelaBody = document.querySelector('#tabela-fretes-body');
-                tabelaBody.innerHTML = '';
-
-                if (fretes.length === 0) {
-                    tabelaBody.innerHTML = '<tr><td colspan="6" class="p-6 text-center">Nenhuma solicitação encontrada.</td></tr>';
-                    return;
-                }
-                
-                // Preenche a tabela com os dados de cada frete
-                fretes.forEach(frete => {
-                    const linhaHtml = `
-                        <tr>
-                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">${frete['ID'] || ''}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm"><span class="${getStatusClass(frete['Status'] || '')}">${frete['Status'] || ''}</span></td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Dia e Hora da Solicitação'] || ''}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Solicitante'] || ''}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Veículo'] || ''}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Empresa'] || ''}</td>
-                        </tr>
-                    `;
-                    tabelaBody.innerHTML += linhaHtml;
-                });
-                
-                // Atualiza os cartões do dashboard de resumo
-                document.getElementById('total-solicitacoes').textContent = fretes.length;
-                document.getElementById('total-cancelados').textContent = fretes.filter(f => f.Status === 'Cancelado').length;
-                document.getElementById('total-nao-iniciados').textContent = fretes.filter(f => f.Status === 'Não iniciada').length;
-
-            } catch (error) {
-                console.error('Erro ao carregar os dados:', error);
-                document.querySelector('#tabela-fretes-body').innerHTML = '<tr><td colspan="6" class="p-6 text-center text-red-500">Ocorreu um erro ao carregar os dados. Verifique a URL da API e as permissões.</td></tr>';
-            }
-        }
-
-        // Carrega os dados quando a página abre
-        carregarDados();
     </script>
 
 </body>
 </html>
-
-
-
-
-

@@ -109,23 +109,37 @@
                         </div>
                     </div>
 
-                    <div id="new-shipment" class="tab-content">
-                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden">
-                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScHpaIRSzydX9dT9qF6nunddk4O3yM87bG3_6jViTT8DzlbjQ/viewform?embedded=true" width="100%" height="1800" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
-                        </div>
-                    </div>
-
-                    <div id="new-collection" class="tab-content">
-                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
-                            <h2 class="text-3xl font-bold tracking-tight">Nova Coleta</h2>
-                            <p class="text-subtext-light dark:text-subtext-dark mt-1">Preencha os detalhes abaixo para agendar uma nova coleta.</p>
-                            <div class="mt-8 text-center text-gray-500">(Aqui pode entrar outro iframe para o formulário de Coleta)</div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
+                   <div id="new-shipment" class="tab-content">
+    <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Novo Envio</h2>
+        <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para criar um novo envio.</p>
+        
+        <form id="form-novo-envio" class="space-y-6 mt-8">
+            <div>
+                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="solicitante">Solicitante</label>
+                <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="solicitante" type="text" placeholder="Seu nome completo"/>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="email">E-mail</label>
+                <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="email" type="email" placeholder="seu.email@exemplo.com"/>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="numero_contato">Número de Contato</label>
+                <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="numero_contato" type="text" placeholder="(00) 0 0000-0000"/>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="empresa">Empresa</label>
+                <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="empresa" type="text" placeholder="Nome da sua empresa"/>
+            </div>
+            <div class="flex justify-end pt-4">
+                <button id="submit-button" class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full md:w-auto flex items-center justify-center gap-2" type="submit">
+                    Criar Envio
+                </button>
+            </div>
+        </form>
+        <div id="form-status" class="mt-4 text-center"></div>
     </div>
+</div>
 
     <script>
         // COLE AQUI A URL DA SUA APLICAÇÃO WEB QUE VOCÊ COPIOU DO APPS SCRIPT
@@ -162,4 +176,5 @@
 
 </body>
 </html>
+
 

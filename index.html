@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>SwiftShip - Dashboard de Fretes</title>
+    <title>Gestão de Fretes - Dashboard</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -27,40 +27,25 @@
         }
     </script>
     <style>
-        /* Esconde todas as abas por padrão */
-        .tab-content {
-            display: none;
-        }
-        /* Mostra a aba ativa */
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display">
-
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div class="flex h-full grow flex-col">
-            <header class="flex items-center justify-between whitespace-nowrap border-b border-primary/20 dark:border-primary/30 px-10 py-3 bg-white dark:bg-background-dark">
-                <div class="flex items-center gap-8">
-                    <div class="flex items-center gap-4 text-gray-800 dark:text-white">
-                        <div class="size-8 text-primary">
-                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Meu Dashboard de Fretes</h2>
+            <header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-800 px-10 py-3 bg-white dark:bg-background-dark shadow-sm">
+                <div class="flex items-center gap-4">
+                    <div class="size-8 text-primary">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
                     </div>
-                </div>
-                <div class="flex flex-1 justify-end items-center gap-4">
-                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvmrLk0CDezlSzKsi1xpSlUEDsKOjw8JvZdY4Q-tK0JbBv_TZgTHpct-Hk6yKcKc1fRt2ad10w0n26PkdmN5paTfDQvaBK-ovGSjUvGAfdeYp8nb6dvxiYmx6bnSqPAQ6ocu5Y6xevdI8BZB4sLqqX0eqLHbZ-n9kdoCYAH5vx95A7Q1Q5Eq0gkutzA4Dqzy-zN_mB3pWlVAfV6t9AnRYhYaSuhwbn5RuRtTPib9rTx8FwkPiTLIDVZUZ3hF6Z7VJ7e49rhJgzd_G0");'></div>
+                    <h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Gestão de Fretes Vetore</h2>
                 </div>
             </header>
 
             <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
                 <div class="max-w-7xl mx-auto">
-                    
                     <div class="border-b border-gray-200 dark:border-gray-700 mb-8">
                         <nav class="-mb-px flex space-x-8" aria-label="Tabs">
                             <button onclick="changeTab('dashboard')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-primary border-primary">Dashboard</button>
@@ -72,18 +57,9 @@
 
                     <div id="dashboard" class="tab-content active">
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900">
-                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total de Solicitações</p>
-                                <p id="total-solicitacoes" class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">...</p>
-                            </div>
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900">
-                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Cancelados</p>
-                                <p id="total-cancelados" class="text-4xl font-bold tracking-tight text-red-600 dark:text-red-500">...</p>
-                            </div>
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900">
-                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Não Iniciados</p>
-                                <p id="total-nao-iniciados" class="text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-500">...</p>
-                            </div>
+                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total de Solicitações</p><p id="total-solicitacoes" class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">...</p></div>
+                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Cancelados</p><p id="total-cancelados" class="text-4xl font-bold tracking-tight text-red-600 dark:text-red-500">...</p></div>
+                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Não Iniciados</p><p id="total-nao-iniciados" class="text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-500">...</p></div>
                         </div>
                     </div>
 
@@ -102,62 +78,66 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tabela-fretes-body" class="divide-y divide-gray-200 dark:divide-gray-800">
-                                        <tr><td colspan="6" class="p-6 text-center">A carregar dados...</td></tr>
+                                        <tr><td colspan="6" class="p-6 text-center text-gray-500">A carregar dados...</td></tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
 
-                   <div id="new-shipment" class="tab-content">
-    <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Novo Envio</h2>
-        <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para criar um novo envio.</p>
-        
-        <form id="form-novo-envio" class="space-y-6 mt-8">
-            <div>
-                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="solicitante">Solicitante</label>
-                <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="solicitante" type="text" placeholder="Seu nome completo"/>
-            </div>
-            <div>
-                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="email">E-mail</label>
-                <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="email" type="email" placeholder="seu.email@exemplo.com"/>
-            </div>
-            <div>
-                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="numero_contato">Número de Contato</label>
-                <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="numero_contato" type="text" placeholder="(00) 0 0000-0000"/>
-            </div>
-            <div>
-                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="empresa">Empresa</label>
-                <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="empresa" type="text" placeholder="Nome da sua empresa"/>
-            </div>
-            <div class="flex justify-end pt-4">
-                <button id="submit-button" class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full md:w-auto flex items-center justify-center gap-2" type="submit">
-                    Criar Envio
-                </button>
-            </div>
-        </form>
-        <div id="form-status" class="mt-4 text-center"></div>
+                    <div id="new-shipment" class="tab-content">
+                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
+                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Novo Envio</h2>
+                            <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para criar um novo envio.</p>
+                            
+                            <form id="form-novo-envio" class="space-y-6 mt-8">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="solicitante">Solicitante</label>
+                                    <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="solicitante" type="text" placeholder="Seu nome completo"/>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="email">E-mail</label>
+                                    <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="email" type="email" placeholder="seu.email@exemplo.com"/>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="numero_contato">Número de Contato</label>
+                                    <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="numero_contato" type="text" placeholder="(00) 0 0000-0000"/>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="empresa">Empresa</label>
+                                    <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="empresa" type="text" placeholder="Nome da sua empresa"/>
+                                </div>
+                                <div class="flex justify-end pt-4">
+                                    <button id="submit-button" class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full md:w-auto flex items-center justify-center gap-2" type="submit">
+                                        Criar Envio
+                                    </button>
+                                </div>
+                            </form>
+                            <div id="form-status" class="mt-4 text-center"></div>
+                        </div>
+                    </div>
+
+                    <div id="new-collection" class="tab-content">
+                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
+                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Nova Coleta</h2>
+                            <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para agendar uma nova coleta.</p>
+                            <div class="mt-8 text-center text-gray-500">(Aqui pode entrar outro formulário para a Coleta)</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-</div>
 
     <script>
-        // COLE AQUI A URL DA SUA APLICAÇÃO WEB QUE VOCÊ COPIOU DO APPS SCRIPT
-        const apiUrl = 'https://script.google.com/macros/s/AKfycbwcXzsC5lbek215IxvB21abAcD8UNBFr2prR9YQC-JhkiCrfqI2eRMVAGWU8FKiOdQ8/exec';
+        // COLE AQUI A SUA URL DO APLICATIVO DA WEB
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbwH8iCDo6FqrIp0GrBfuTI0HHYe9KUDIxDgzCPmIup5GGv5IgM0H0qjpmTD0AsMje5s/exec';
 
-        // --- LÓGICA PARA MUDANÇA DE ABAS ---
         const tabs = document.querySelectorAll('.tab-content');
         const buttons = document.querySelectorAll('.tab-button');
 
         function changeTab(tabId) {
-            tabs.forEach(tab => {
-                if (tab.id === tabId) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-            
+            tabs.forEach(tab => tab.id === tabId ? tab.classList.add('active') : tab.classList.remove('active'));
             buttons.forEach(button => {
                 if (button.getAttribute('onclick').includes(`'${tabId}'`)) {
                     button.classList.add('text-primary', 'border-primary');
@@ -169,12 +149,90 @@
             });
         }
 
-        // --- LÓGICA PARA CARREGAR DADOS DA PLANILHA ---
-        // (O resto do seu código JavaScript para carregar os dados continua aqui)
+        function getStatusClass(status) {
+            if (!status) return 'inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:text-gray-300';
+            const statusClean = status.trim().toLowerCase().replace(/\s+/g, '');
+            if (statusClean === 'cancelado') return 'inline-flex items-center rounded-full bg-red-100 dark:bg-red-800 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-100';
+            if (statusClean === 'finalizado') return 'inline-flex items-center rounded-full bg-green-100 dark:bg-green-800 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-100';
+            if (statusClean.includes('execu') || statusClean.includes('processo')) return 'inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-800 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-100';
+            return 'inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-800 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-100';
+        }
         
-    </script>
+        async function carregarDados() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const fretes = await response.json();
 
+                const tabelaBody = document.querySelector('#tabela-fretes-body');
+                tabelaBody.innerHTML = '';
+
+                if (!fretes || fretes.length === 0 || (fretes.length === 1 && fretes[0].error)) {
+                    tabelaBody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-gray-500">Nenhuma solicitação encontrada.</td></tr>';
+                    document.getElementById('total-solicitacoes').textContent = '0';
+                    document.getElementById('total-cancelados').textContent = '0';
+                    document.getElementById('total-nao-iniciados').textContent = '0';
+                    return;
+                }
+                
+                fretes.forEach(frete => {
+                    const linhaHtml = `
+                        <tr>
+                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">${frete['ID'] || ''}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm"><span class="${getStatusClass(frete['Status'])}">${frete['Status'] || ''}</span></td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Dia e Hora da Solicitação'] || ''}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Solicitante'] || ''}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Veículo'] || ''}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Empresa'] || ''}</td>
+                        </tr>
+                    `;
+                    tabelaBody.innerHTML += linhaHtml;
+                });
+                
+                document.getElementById('total-solicitacoes').textContent = fretes.length;
+                document.getElementById('total-cancelados').textContent = fretes.filter(f => f.Status && f.Status.trim().toLowerCase() === 'cancelado').length;
+                document.getElementById('total-nao-iniciados').textContent = fretes.filter(f => f.Status && f.Status.trim().toLowerCase() === 'não iniciada').length;
+
+            } catch (error) {
+                console.error('Erro ao carregar os dados:', error);
+                document.querySelector('#tabela-fretes-body').innerHTML = '<tr><td colspan="6" class="p-6 text-center text-red-500">Ocorreu um erro ao carregar os dados. Verifique a URL da API, as permissões e a consola do navegador (F12).</td></tr>';
+            }
+        }
+        
+        // --- LÓGICA PARA ENVIAR O FORMULÁRIO ---
+        const form = document.getElementById('form-novo-envio');
+        const formStatus = document.getElementById('form-status');
+        const submitButton = document.getElementById('submit-button');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            submitButton.disabled = true;
+            formStatus.textContent = 'A enviar...';
+            formStatus.className = 'mt-4 text-center text-blue-500';
+            const formData = new FormData(form);
+            try {
+                const response = await fetch(apiUrl, { method: 'POST', body: new URLSearchParams(formData) });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    formStatus.textContent = 'Solicitação enviada com sucesso!';
+                    formStatus.className = 'mt-4 text-center text-green-500';
+                    form.reset();
+                } else { throw new Error(result.message); }
+            } catch (error) {
+                console.error('Erro ao enviar formulário:', error);
+                formStatus.textContent = 'Ocorreu um erro ao enviar a solicitação.';
+                formStatus.className = 'mt-4 text-center text-red-500';
+            } finally {
+                setTimeout(() => { 
+                    formStatus.textContent = '';
+                    submitButton.disabled = false;
+                    carregarDados(); // Recarrega os dados da tabela após o envio
+                }, 3000);
+            }
+        });
+
+        // Carrega os dados quando a página abre
+        document.addEventListener('DOMContentLoaded', carregarDados);
+    </script>
 </body>
 </html>
-
-

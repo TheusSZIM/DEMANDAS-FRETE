@@ -91,100 +91,84 @@
                             <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para criar um novo envio.</p>
                             
                           <form id="form-novo-envio" class="space-y-6 mt-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="solicitante">Solicitante</label>
-            <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="solicitante" type="text" placeholder="Seu nome completo"/>
-        <div id="form-status" class="mt-4 text-center"></div>
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="email">E-mail</label>
-            <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="email" type="email" placeholder="seu.email@exemplo.com"/>
-        </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="numero_contato">Número de Contato</label>
-            <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="numero_contato" type="text" placeholder="(00) 0 0000-0000"/>
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="empresa">Empresa</label>
-            <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="empresa" type="text" placeholder="Nome da sua empresa"/>
-        </div>
-    </div>
-    
-    <hr class="border-gray-300 dark:border-gray-700">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="solicitante">Solicitante</label>
+                                        <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="solicitante" type="text" placeholder="Seu nome completo"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="email">E-mail</label>
+                                        <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="email" type="email" placeholder="seu.email@exemplo.com"/>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="numero_contato">Número de Contato</label>
+                                        <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="numero_contato" type="text" placeholder="(00) 0 0000-0000"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="empresa">Empresa</label>
+                                        <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="empresa" type="text" placeholder="Nome da sua empresa"/>
+                                    </div>
+                                </div>
+                                
+                                <hr class="border-gray-300 dark:border-gray-700">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipo</label>
-            <div class="mt-2 space-y-2">
-                <label class="flex items-center">
-                    <input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo" value="Envio" checked>
-                    <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Envio</span>
-                </label>
-                <label class="flex items-center">
-                    <input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo" value="Coleta">
-                    <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Coleta</span>
-                </label>
-            </div>
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipo de Veículo Necessário*</label>
-            <div class="mt-2 space-y-2">
-                <label class="flex items-center">
-                    <input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo_veiculo" value="Caminhão" required>
-                    <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Caminhão</span>
-                </label>
-                <label class="flex items-center">
-                    <input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo_veiculo" value="Carro">
-                    <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Carro</span>
-                </label>
-            </div>
-        </div>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="data_coleta">Data de Coleta/Envio</label>
-            <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="data_coleta" type="date"/>
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="horario_janela">Horário de Janela</label>
-            <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="horario_janela" type="time"/>
-        </div>
-    </div>
-    
-    <div>
-        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Urgência?</label>
-        <div class="mt-2 flex items-center gap-6">
-            <label class="flex items-center">
-                <input type="radio" class="form-radio text-primary focus:ring-primary" name="urgencia" value="Sim">
-                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Sim</span>
-            </label>
-            <label class="flex items-center">
-                <input type="radio" class="form-radio text-primary focus:ring-primary" name="urgencia" value="Não" checked>
-                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Não</span>
-            </label>
-        </div>
-    </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipo</label>
+                                        <div class="mt-2 space-y-2">
+                                            <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo" value="Envio" checked><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Envio</span></label>
+                                            <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo" value="Coleta"><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Coleta</span></label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipo de Veículo Necessário*</label>
+                                        <div class="mt-2 space-y-2">
+                                            <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo_veiculo" value="Caminhão" required><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Caminhão</span></label>
+                                            <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo_veiculo" value="Carro"><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Carro</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="data_coleta">Data de Coleta/Envio</label>
+                                        <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="data_coleta" type="date"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="horario_janela">Horário de Janela</label>
+                                        <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="horario_janela" type="time"/>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Urgência?</label>
+                                    <div class="mt-2 flex items-center gap-6">
+                                        <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="urgencia" value="Sim"><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Sim</span></label>
+                                        <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="urgencia" value="Não" checked><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Não</span></label>
+                                    </div>
+                                </div>
 
-    <div>
-        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="endereco">Endereço - Colocar link Google Maps*</label>
-        <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="endereco" type="text" placeholder="Cole aqui o link do Google Maps"/>
-    </div>
-    
-    <div>
-        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="observacao">Observação (Opcional)</label>
-        <textarea class="form-textarea w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="observacao" rows="3" placeholder="Alguma informação adicional?"></textarea>
-    </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="endereco">Endereço - Colocar link Google Maps*</label>
+                                    <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="endereco" type="text" placeholder="Cole aqui o link do Google Maps"/>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="observacao">Observação (Opcional)</label>
+                                    <textarea class="form-textarea w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="observacao" rows="3" placeholder="Alguma informação adicional?"></textarea>
+                                </div>
 
-    <div class="flex justify-end pt-4">
-        <button id="submit-button" class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full md:w-auto flex items-center justify-center gap-2" type="submit">
-            Criar Envio
-        </button>
-    </div>
-</form>
+                                <div class="flex justify-end pt-4">
+                                    <button id="submit-button" class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full md:w-auto flex items-center justify-center gap-2" type="submit">
+                                        Criar Envio
+                                    </button>
+                                </div>
+                            </form>
+                            <div id="form-status" class="mt-4 text-center"></div>
+                        </div>
+                    </div>
 
                     <div id="new-collection" class="tab-content">
                         <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
@@ -199,112 +183,16 @@
     </div>
 
     <script>
-        // COLE AQUI A SUA URL DO APLICATIVO DA WEB
-        const apiUrl = 'https://script.google.com/macros/s/AKfycbwcXzsC5lbek215IxvB21abAcD8UNBFr2prR9YQC-JhkiCrfqI2eRMVAGWU8FKiOdQ8/exec';
+        // O SEU LINK DE IMPLANTAÇÃO JÁ ESTÁ INSERIDO AQUI
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbyC4Empe4mLasrosnLKgTHtPqDqk8qP_q4x-a6cKE3uzuL3sgI5eRXkcqYazUdlBDeu/exec';
 
         const tabs = document.querySelectorAll('.tab-content');
         const buttons = document.querySelectorAll('.tab-button');
-
-        function changeTab(tabId) {
-            tabs.forEach(tab => tab.id === tabId ? tab.classList.add('active') : tab.classList.remove('active'));
-            buttons.forEach(button => {
-                if (button.getAttribute('onclick').includes(`'${tabId}'`)) {
-                    button.classList.add('text-primary', 'border-primary');
-                    button.classList.remove('text-gray-500', 'border-transparent');
-                } else {
-                    button.classList.remove('text-primary', 'border-primary');
-                    button.classList.add('text-gray-500', 'border-transparent');
-                }
-            });
-        }
-
-        function getStatusClass(status) {
-            if (!status) return 'inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:text-gray-300';
-            const statusClean = status.trim().toLowerCase().replace(/\s+/g, '');
-            if (statusClean === 'cancelado') return 'inline-flex items-center rounded-full bg-red-100 dark:bg-red-800 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-100';
-            if (statusClean === 'finalizado') return 'inline-flex items-center rounded-full bg-green-100 dark:bg-green-800 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-100';
-            if (statusClean.includes('execu') || statusClean.includes('processo')) return 'inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-800 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-100';
-            return 'inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-800 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-100';
-        }
-        
-        async function carregarDados() {
-            try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const fretes = await response.json();
-
-                const tabelaBody = document.querySelector('#tabela-fretes-body');
-                tabelaBody.innerHTML = '';
-
-                if (!fretes || fretes.length === 0 || (fretes.length === 1 && fretes[0].error)) {
-                    tabelaBody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-gray-500">Nenhuma solicitação encontrada.</td></tr>';
-                    document.getElementById('total-solicitacoes').textContent = '0';
-                    document.getElementById('total-cancelados').textContent = '0';
-                    document.getElementById('total-nao-iniciados').textContent = '0';
-                    return;
-                }
-                
-                fretes.forEach(frete => {
-                    const linhaHtml = `
-                        <tr>
-                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">${frete['ID'] || ''}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm"><span class="${getStatusClass(frete['Status'])}">${frete['Status'] || ''}</span></td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Dia e Hora da Solicitação'] || ''}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Solicitante'] || ''}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Veículo'] || ''}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Empresa'] || ''}</td>
-                        </tr>
-                    `;
-                    tabelaBody.innerHTML += linhaHtml;
-                });
-                
-                document.getElementById('total-solicitacoes').textContent = fretes.length;
-                document.getElementById('total-cancelados').textContent = fretes.filter(f => f.Status && f.Status.trim().toLowerCase() === 'cancelado').length;
-                document.getElementById('total-nao-iniciados').textContent = fretes.filter(f => f.Status && f.Status.trim().toLowerCase() === 'não iniciada').length;
-
-            } catch (error) {
-                console.error('Erro ao carregar os dados:', error);
-                document.querySelector('#tabela-fretes-body').innerHTML = '<tr><td colspan="6" class="p-6 text-center text-red-500">Ocorreu um erro ao carregar os dados. Verifique a URL da API, as permissões e a consola do navegador (F12).</td></tr>';
-            }
-        }
-        
-        // --- LÓGICA PARA ENVIAR O FORMULÁRIO ---
-        const form = document.getElementById('form-novo-envio');
-        const formStatus = document.getElementById('form-status');
-        const submitButton = document.getElementById('submit-button');
-
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            submitButton.disabled = true;
-            formStatus.textContent = 'A enviar...';
-            formStatus.className = 'mt-4 text-center text-blue-500';
-            const formData = new FormData(form);
-            try {
-                const response = await fetch(apiUrl, { method: 'POST', body: new URLSearchParams(formData) });
-                const result = await response.json();
-                if (result.status === 'success') {
-                    formStatus.textContent = 'Solicitação enviada com sucesso!';
-                    formStatus.className = 'mt-4 text-center text-green-500';
-                    form.reset();
-                } else { throw new Error(result.message); }
-            } catch (error) {
-                console.error('Erro ao enviar formulário:', error);
-                formStatus.textContent = 'Ocorreu um erro ao enviar a solicitação.';
-                formStatus.className = 'mt-4 text-center text-red-500';
-            } finally {
-                setTimeout(() => { 
-                    formStatus.textContent = '';
-                    submitButton.disabled = false;
-                    carregarDados(); // Recarrega os dados da tabela após o envio
-                }, 3000);
-            }
-        });
-
-        // Carrega os dados quando a página abre
+        function changeTab(tabId){ tabs.forEach(t => t.id === tabId ? t.classList.add('active') : t.classList.remove('active')); buttons.forEach(b => b.getAttribute('onclick').includes(`'${tabId}'`) ? (b.classList.add('text-primary','border-primary'), b.classList.remove('text-gray-500','border-transparent')) : (b.classList.remove('text-primary','border-primary'), b.classList.add('text-gray-500','border-transparent')))}
+        function getStatusClass(s){ if(!s)return''; const c=s.trim().toLowerCase().replace(/\s+/g,''); if(c==='cancelado')return'bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-100'; if(c==='finalizado')return'bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100'; if(c.includes('execu')||c.includes('processo'))return'bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100'; return'bg-yellow-100 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-100'}
+        async function carregarDados(){try{const r=await fetch(apiUrl); if(!r.ok)throw new Error(`HTTP error! status:${r.status}`); const fretes=await r.json(); const t=document.querySelector('#tabela-fretes-body'); t.innerHTML=''; if(!fretes||fretes.length===0||(fretes.length===1&&fretes[0].error)){t.innerHTML='<tr><td colspan="6" class="p-6 text-center text-gray-500">Nenhuma solicitação encontrada.</td></tr>'; document.getElementById('total-solicitacoes').textContent='0'; document.getElementById('total-cancelados').textContent='0'; document.getElementById('total-nao-iniciados').textContent='0'; return} fretes.forEach(fr=>{const h=`<tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">${fr.ID||''}</td><td class="whitespace-nowrap px-3 py-4 text-sm"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getStatusClass(fr.Status)}">${fr.Status||''}</span></td><td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${fr['Data da Solicitação']||''}</td><td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${fr.Solicitante||''}</td><td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${fr['Veículo']||''}</td><td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${fr.Empresa||''}</td></tr>`; t.innerHTML+=h}); document.getElementById('total-solicitacoes').textContent=fretes.length; document.getElementById('total-cancelados').textContent=fretes.filter(fr=>fr.Status&&fr.Status.trim().toLowerCase()==='cancelado').length; document.getElementById('total-nao-iniciados').textContent=fretes.filter(fr=>fr.Status&&fr.Status.trim().toLowerCase()==='não iniciada').length}catch(e){console.error('Erro:',e); t.innerHTML='<tr><td colspan="6" class="p-6 text-center text-red-500">Ocorreu um erro. Verifique a URL da API e a consola (F12).</td></tr>'}}
+        const form=document.getElementById('form-novo-envio'),formStatus=document.getElementById('form-status'),submitButton=document.getElementById('submit-button'); form.addEventListener('submit',async e=>{e.preventDefault(); submitButton.disabled=true; formStatus.textContent='A enviar...'; formStatus.className='mt-4 text-center text-blue-500'; const d=new FormData(form); try{const r=await fetch(apiUrl,{method:'POST',body:new URLSearchParams(d)}); const j=await r.json(); if(j.status==='success'){formStatus.textContent='Solicitação enviada com sucesso!'; formStatus.className='mt-4 text-center text-green-500'; form.reset()}else{throw new Error(j.message)}}catch(e){console.error('Erro:',e); formStatus.textContent='Ocorreu um erro ao enviar.'; formStatus.className='mt-4 text-center text-red-500'}finally{setTimeout(()=>{formStatus.textContent=''; submitButton.disabled=false; carregarDados()},3000)}}); 
         document.addEventListener('DOMContentLoaded', carregarDados);
     </script>
 </body>
 </html>
-
-
-

@@ -11,139 +11,145 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
     <script>
         tailwind.config = {
-            darkMode: "class",
+            darkMode: "class", // Permite alternar modo claro/escuro se necessário
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#1173d4",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
+                        "primary": "#1173d4", // Azul primário
+                        "background-light": "#f6f7f8", // Fundo claro
+                        "background-dark": "#101922", // Fundo escuro
                     },
                     fontFamily: {
-                        "display": ["Work Sans", "sans-serif"]
+                        "display": ["Work Sans", "sans-serif"] // Fonte principal
                     },
                 },
             },
         }
     </script>
     <style>
+        /* Esconde todas as abas por padrão */
         .tab-content { display: none; }
+        /* Mostra a aba ativa */
         .tab-content.active { display: block; }
+        /* Estilo para o botão de envio enquanto desabilitado */
+        #submit-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display">
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div class="flex h-full grow flex-col">
-            <header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-800 px-10 py-3 bg-white dark:bg-background-dark shadow-sm">
+            <header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-700 px-6 sm:px-10 py-3 bg-white dark:bg-slate-900 shadow-sm">
                 <div class="flex items-center gap-4">
                     <div class="size-8 text-primary">
                         <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
                     </div>
-                    <h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Gestão de Fretes Vetore</h2>
+                    <h2 class="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">Gestão de Fretes</h2>
                 </div>
-            </header>
+                </header>
 
             <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
                 <div class="max-w-7xl mx-auto">
                     <div class="border-b border-gray-200 dark:border-gray-700 mb-8">
-                        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                        <nav class="-mb-px flex space-x-6 sm:space-x-8 overflow-x-auto" aria-label="Tabs">
                             <button onclick="changeTab('dashboard')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-primary border-primary">Dashboard</button>
-                            <button onclick="changeTab('shipments')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Todas as Solicitações</button>
-                            <button onclick="changeTab('new-shipment')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Novo Envio</button>
-                            <button onclick="changeTab('new-collection')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Nova Coleta</button>
-                        </nav>
+                            <button onclick="changeTab('shipments')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200">Todas as Solicitações</button>
+                            <button onclick="changeTab('new-shipment')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200">Nova Solicitação</button>
+                            </nav>
                     </div>
 
                     <div id="dashboard" class="tab-content active">
-                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total de Solicitações</p><p id="total-solicitacoes" class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">...</p></div>
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Cancelados</p><p id="total-cancelados" class="text-4xl font-bold tracking-tight text-red-600 dark:text-red-500">...</p></div>
-                            <div class="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900"><p class="text-sm font-medium text-slate-500 dark:text-slate-400">Fretes Não Iniciados</p><p id="total-nao-iniciados" class="text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-500">...</p></div>
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                            <div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-slate-800 p-5 shadow"><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total de Solicitações</p><p id="total-solicitacoes" class="text-3xl font-bold text-gray-900 dark:text-white">...</p></div>
+                            <div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-slate-800 p-5 shadow"><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Fretes Cancelados</p><p id="total-cancelados" class="text-3xl font-bold text-red-600">...</p></div>
+                            <div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-slate-800 p-5 shadow"><p class="text-sm font-medium text-gray-500 dark:text-gray-400">Fretes Não Iniciados</p><p id="total-nao-iniciados" class="text-3xl font-bold text-blue-600">...</p></div>
                         </div>
-                    </div>
+                         </div>
 
                     <div id="shipments" class="tab-content">
-                        <div class="overflow-hidden rounded-lg shadow ring-1 ring-black ring-opacity-5">
-                            <div class="overflow-x-auto">
-                                <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-700 bg-white dark:bg-background-dark">
-                                    <thead class="bg-gray-50 dark:bg-gray-800">
+                        <div class="bg-white dark:bg-slate-800 overflow-hidden shadow rounded-lg">
+                             <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                    <thead class="bg-gray-50 dark:bg-slate-700">
                                         <tr>
-                                            <th class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-white sm:pl-6">ID</th>
-                                            <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">Status</th>
-                                            <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">Data da Solicitação</th>
-                                            <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">Solicitante</th>
-                                            <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">Veículo</th>
-                                            <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">Empresa</th>
+                                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 sm:pl-6">ID</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">Status</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">Data da Solicitação</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">Solicitante</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">Empresa</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">Veículo</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tabela-fretes-body" class="divide-y divide-gray-200 dark:divide-gray-800">
-                                        <tr><td colspan="6" class="p-6 text-center text-gray-500">A carregar dados...</td></tr>
-                                    </tbody>
+                                    <tbody id="tabela-fretes-body" class="divide-y divide-gray-200 dark:divide-gray-600">
+                                        <tr><td colspan="6" class="p-6 text-center text-gray-500 dark:text-gray-400">A carregar dados...</td></tr>
+                                        </tbody>
                                 </table>
-                            </div>
+                             </div>
                         </div>
                     </div>
 
                     <div id="new-shipment" class="tab-content">
-                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
-                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Novo Envio</h2>
-                            <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para criar um novo envio.</p>
-                            
-                          <form id="form-novo-envio" class="space-y-6 mt-8">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="solicitante">Solicitante</label>
-                                        <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="solicitante" type="text" placeholder="Seu nome completo"/>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="email">E-mail</label>
-                                        <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="email" type="email" placeholder="seu.email@exemplo.com"/>
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="numero_contato">Número de Contato</label>
-                                        <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="numero_contato" type="text" placeholder="(00) 0 0000-0000"/>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="empresa">Empresa</label>
-                                        <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="empresa" type="text" placeholder="Nome da sua empresa"/>
-                                    </div>
-                                </div>
-                                
-                                <hr class="border-gray-300 dark:border-gray-700">
+                         <div class="max-w-3xl mx-auto bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-lg shadow">
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Nova Solicitação de Frete</h2>
+                            <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo.</p>
 
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <form id="form-novo-envio" class="space-y-5 mt-6">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     <div>
-                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipo</label>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="solicitante">Solicitante*</label>
+                                        <input required class="mt-1 form-input w-full bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary" name="solicitante" type="text" placeholder="Seu nome completo"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="email">E-mail*</label>
+                                        <input required class="mt-1 form-input w-full bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary" name="email" type="email" placeholder="seu.email@exemplo.com"/>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="numero_contato">Número de Contato</label>
+                                        <input class="mt-1 form-input w-full bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary" name="numero_contato" type="text" placeholder="(00) 00000-0000"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="empresa">Empresa*</label>
+                                        <input required class="mt-1 form-input w-full bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary" name="empresa" type="text" placeholder="Nome da sua empresa"/>
+                                    </div>
+                                </div>
+
+                                <hr class="border-gray-200 dark:border-gray-600">
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                     <div>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tipo*</label>
                                         <div class="mt-2 space-y-2">
                                             <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo" value="Envio" checked><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Envio</span></label>
                                             <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo" value="Coleta"><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Coleta</span></label>
                                         </div>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipo de Veículo Necessário*</label>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tipo de Veículo*</label>
                                         <div class="mt-2 space-y-2">
                                             <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo_veiculo" value="Caminhão" required><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Caminhão</span></label>
                                             <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="tipo_veiculo" value="Carro"><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Carro</span></label>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="data_coleta">Data de Coleta/Envio</label>
-                                        <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="data_coleta" type="date"/>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                     <div>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="data_coleta">Data de Coleta/Envio</label>
+                                        <input class="mt-1 form-input w-full bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary" name="data_coleta" type="date"/>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="horario_janela">Horário de Janela</label>
-                                        <input class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="horario_janela" type="time"/>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="horario_janela">Horário (Janela)</label>
+                                        <input class="mt-1 form-input w-full bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary" name="horario_janela" type="time"/>
                                     </div>
                                 </div>
-                                
+
                                 <div>
-                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Urgência?</label>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Urgência?</label>
                                     <div class="mt-2 flex items-center gap-6">
                                         <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="urgencia" value="Sim"><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Sim</span></label>
                                         <label class="flex items-center"><input type="radio" class="form-radio text-primary focus:ring-primary" name="urgencia" value="Não" checked><span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Não</span></label>
@@ -151,59 +157,195 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="endereco">Endereço - Colocar link Google Maps*</label>
-                                    <input required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="endereco" type="text" placeholder="Cole aqui o link do Google Maps"/>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="observacao">Observação (Opcional)</label>
-                                    <textarea class="form-textarea w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary" name="observacao" rows="3" placeholder="Alguma informação adicional?"></textarea>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="endereco">Endereço Completo*</label>
+                                    <input required class="mt-1 form-input w-full bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary" name="endereco" type="text" placeholder="Rua, Número, Bairro, Cidade, Estado, CEP"/>
                                 </div>
 
-                                <div class="flex justify-end pt-4">
-                                    <button id="submit-button" class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors w-full md:w-auto flex items-center justify-center gap-2" type="submit">
-                                        Criar Envio
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="observacao">Observação</label>
+                                    <textarea class="mt-1 form-textarea w-full bg-gray-50 dark:bg-slate-700 border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary" name="observacao" rows="3" placeholder="Alguma informação adicional?"></textarea>
+                                </div>
+
+                                <div class="flex justify-end pt-2">
+                                    <button id="submit-button" class="bg-primary text-white font-semibold py-2 px-5 rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path d="M3.105 3.105a1.5 1.5 0 012.121 0L10 7.793l4.774-4.688a1.5 1.5 0 012.121 2.121L12.121 10l4.688 4.774a1.5 1.5 0 01-2.121 2.121L10 12.121l-4.774 4.688a1.5 1.5 0 01-2.121-2.121L7.793 10 3.105 5.226a1.5 1.5 0 010-2.121z" /></svg>
+                                        Enviar Solicitação
                                     </button>
                                 </div>
                             </form>
-                            <div id="form-status" class="mt-4 text-center"></div>
+                            <div id="form-status" class="mt-4 text-center text-sm"></div>
                         </div>
                     </div>
 
                     <div id="new-collection" class="tab-content">
-                        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
-                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Nova Coleta</h2>
-                            <p class="text-gray-600 dark:text-gray-400 mt-1">Preencha os detalhes abaixo para agendar uma nova coleta.</p>
-                            <div class="mt-8 text-center text-gray-500">(Aqui pode entrar outro formulário para a Coleta)</div>
-                        </div>
-                    </div>
+                           <div class="max-w-3xl mx-auto bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-lg shadow">
+                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Nova Coleta</h2>
+                                <p class="text-gray-600 dark:text-gray-400 mt-1">Formulário para nova coleta pode ser adicionado aqui.</p>
+                                </div>
+                     </div>
+
                 </div>
             </main>
         </div>
     </div>
 
     <script>
-        // O SEU LINK DE IMPLANTAÇÃO JÁ ESTÁ INSERIDO AQUI
-        const apiUrl = 'https://script.google.com/macros/s/AKfycbwgrv8oUPwx6KfbNTfee08IciKV1rOsCo9mSifr7jGndFKe4lfciAyz9KCrFa2pARqE/exec';
+        // **IMPORTANTE:** COLE AQUI A SUA URL FINAL DO APLICATIVO DA WEB (/exec)
+        const apiUrl = 'https://script.google.com/macros/s/AKfycby-jT_wjG5NF6NwmgSC56a0rOng6k4x8kKSDO4hfqzFPs6pstXRZf64c8e3b4I6hrBo/exec';
 
+        // --- LÓGICA PARA MUDANÇA DE ABAS ---
         const tabs = document.querySelectorAll('.tab-content');
         const buttons = document.querySelectorAll('.tab-button');
-        function changeTab(tabId){ tabs.forEach(t => t.id === tabId ? t.classList.add('active') : t.classList.remove('active')); buttons.forEach(b => b.getAttribute('onclick').includes(`'${tabId}'`) ? (b.classList.add('text-primary','border-primary'), b.classList.remove('text-gray-500','border-transparent')) : (b.classList.remove('text-primary','border-primary'), b.classList.add('text-gray-500','border-transparent')))}
-        function getStatusClass(s){ if(!s)return''; const c=s.trim().toLowerCase().replace(/\s+/g,''); if(c==='cancelado')return'bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-100'; if(c==='finalizado')return'bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100'; if(c.includes('execu')||c.includes('processo'))return'bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100'; return'bg-yellow-100 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-100'}
-        async function carregarDados(){try{const r=await fetch(apiUrl); if(!r.ok)throw new Error(`HTTP error! status:${r.status}`); const fretes=await r.json(); const t=document.querySelector('#tabela-fretes-body'); t.innerHTML=''; if(!fretes||fretes.length===0||(fretes.length===1&&fretes[0].error)){t.innerHTML='<tr><td colspan="6" class="p-6 text-center text-gray-500">Nenhuma solicitação encontrada.</td></tr>'; document.getElementById('total-solicitacoes').textContent='0'; document.getElementById('total-cancelados').textContent='0'; document.getElementById('total-nao-iniciados').textContent='0'; return} fretes.forEach(fr=>{const h=`<tr><td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">${fr.ID||''}</td><td class="whitespace-nowrap px-3 py-4 text-sm"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getStatusClass(fr.Status)}">${fr.Status||''}</span></td><td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${fr['Data da Solicitação']||''}</td><td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${fr.Solicitante||''}</td><td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${fr['Veículo']||''}</td><td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${fr.Empresa||''}</td></tr>`; t.innerHTML+=h}); document.getElementById('total-solicitacoes').textContent=fretes.length; document.getElementById('total-cancelados').textContent=fretes.filter(fr=>fr.Status&&fr.Status.trim().toLowerCase()==='cancelado').length; document.getElementById('total-nao-iniciados').textContent=fretes.filter(fr=>fr.Status&&fr.Status.trim().toLowerCase()==='não iniciada').length}catch(e){console.error('Erro:',e); t.innerHTML='<tr><td colspan="6" class="p-6 text-center text-red-500">Ocorreu um erro. Verifique a URL da API e a consola (F12).</td></tr>'}}
-        const form=document.getElementById('form-novo-envio'),formStatus=document.getElementById('form-status'),submitButton=document.getElementById('submit-button'); form.addEventListener('submit',async e=>{e.preventDefault(); submitButton.disabled=true; formStatus.textContent='A enviar...'; formStatus.className='mt-4 text-center text-blue-500'; const d=new FormData(form); try{const r=await fetch(apiUrl,{method:'POST',body:new URLSearchParams(d)}); const j=await r.json(); if(j.status==='success'){formStatus.textContent='Solicitação enviada com sucesso!'; formStatus.className='mt-4 text-center text-green-500'; form.reset()}else{throw new Error(j.message)}}catch(e){console.error('Erro:',e); formStatus.textContent='Ocorreu um erro ao enviar.'; formStatus.className='mt-4 text-center text-red-500'}finally{setTimeout(()=>{formStatus.textContent=''; submitButton.disabled=false; carregarDados()},3000)}}); 
+
+        function changeTab(tabId) {
+            tabs.forEach(tab => tab.id === tabId ? tab.classList.add('active') : tab.classList.remove('active'));
+            buttons.forEach(button => {
+                const isActive = button.getAttribute('onclick').includes(`'${tabId}'`);
+                button.classList.toggle('text-primary', isActive);
+                button.classList.toggle('border-primary', isActive);
+                button.classList.toggle('text-gray-500', !isActive);
+                button.classList.toggle('border-transparent', !isActive);
+                button.classList.toggle('dark:text-gray-400', !isActive);
+            });
+        }
+
+        // --- LÓGICA PARA ESTILIZAR STATUS ---
+        function getStatusClass(status) {
+            if (!status) return 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300'; // Cor padrão
+            const statusClean = status.trim().toLowerCase().replace(/\s+/g, ''); // Limpa e põe em minúsculas
+            if (statusClean === 'cancelado') return 'bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-100';
+            if (statusClean === 'finalizado' || statusClean === 'concluído') return 'bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100';
+            if (statusClean.includes('execu') || statusClean.includes('processo') || statusClean.includes('andamento')) return 'bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100';
+            // Assume 'Não iniciada' ou outros como pendente/amarelo
+            return 'bg-yellow-100 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-100';
+        }
+
+        // --- LÓGICA PARA CARREGAR DADOS DA PLANILHA ---
+        async function carregarDados() {
+            const tabelaBody = document.querySelector('#tabela-fretes-body');
+            // Mostra mensagem de carregamento inicial
+            tabelaBody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-gray-500 dark:text-gray-400">A carregar dados...</td></tr>';
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) { // Verifica se a API respondeu com sucesso (status 200-299)
+                    throw new Error(`Erro na API: ${response.status} ${response.statusText}`);
+                }
+                const fretes = await response.json();
+
+                tabelaBody.innerHTML = ''; // Limpa a tabela antes de preencher
+
+                if (!fretes || fretes.length === 0 || (fretes.length === 1 && fretes[0].error)) {
+                    // Trata o caso de erro retornado pela API ou lista vazia
+                    const errorMessage = (fretes && fretes[0] && fretes[0].error) ? `Erro ao carregar: ${fretes[0].error}` : "Nenhuma solicitação encontrada.";
+                    tabelaBody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-gray-500 dark:text-gray-400">${errorMessage}</td></tr>`;
+                    document.getElementById('total-solicitacoes').textContent = '0';
+                    document.getElementById('total-cancelados').textContent = '0';
+                    document.getElementById('total-nao-iniciados').textContent = '0';
+                    return;
+                }
+
+                // Preenche a tabela com os dados de cada frete
+                fretes.forEach(frete => {
+                    const statusClass = getStatusClass(frete.Status);
+                    const linhaHtml = `
+                        <tr>
+                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">${frete.ID || ''}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm">
+                                <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${statusClass}">
+                                    ${frete.Status || 'N/A'}
+                                </span>
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Data da Solicitação'] || ''}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete.Solicitante || ''}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete.Empresa || ''}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">${frete['Veículo'] || ''}</td>
+                        </tr>
+                    `;
+                    tabelaBody.innerHTML += linhaHtml; // Adiciona a nova linha ao corpo da tabela
+                });
+
+                // Atualiza os cartões do dashboard de resumo (com tratamento para status nulos/vazios)
+                document.getElementById('total-solicitacoes').textContent = fretes.length;
+                document.getElementById('total-cancelados').textContent = fretes.filter(f => f.Status && f.Status.trim().toLowerCase() === 'cancelado').length;
+                document.getElementById('total-nao-iniciados').textContent = fretes.filter(f => f.Status && f.Status.trim().toLowerCase() === 'não iniciada').length;
+
+            } catch (error) {
+                console.error('Erro detalhado ao carregar dados:', error); // Mostra o erro completo na consola F12
+                tabelaBody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-red-500">Ocorreu um erro ao carregar os dados. Verifique a URL da API, as permissões da planilha e a consola do navegador (F12) para detalhes. Detalhe: ${error.message}</td></tr>`;
+                // Zera os contadores em caso de erro
+                 document.getElementById('total-solicitacoes').textContent = 'Erro';
+                 document.getElementById('total-cancelados').textContent = 'Erro';
+                 document.getElementById('total-nao-iniciados').textContent = 'Erro';
+            }
+        }
+
+        // --- LÓGICA PARA ENVIAR O FORMULÁRIO HTML ---
+        const form = document.getElementById('form-novo-envio');
+        const formStatus = document.getElementById('form-status');
+        const submitButton = document.getElementById('submit-button');
+
+        if(form && formStatus && submitButton) { // Garante que os elementos existem
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Impede o recarregamento padrão da página
+                submitButton.disabled = true; // Desabilita o botão para evitar envios múltiplos
+                formStatus.textContent = 'A enviar...';
+                formStatus.className = 'mt-4 text-center text-sm text-blue-600 dark:text-blue-400';
+
+                const formData = new FormData(form);
+
+                try {
+                    // Envia os dados para a mesma URL da API (o Apps Script saberá que é um POST)
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        // O corpo é enviado como URLSearchParams para que o e.parameter no Apps Script funcione
+                        body: new URLSearchParams(formData)
+                    });
+
+                    // Verifica se a resposta da API foi bem-sucedida
+                    if (!response.ok) {
+                         const errorText = await response.text(); // Tenta ler a resposta de erro
+                         throw new Error(`Erro na API ao enviar: ${response.status} ${response.statusText}. Resposta: ${errorText}`);
+                    }
+
+                    const result = await response.json(); // Lê a resposta JSON do doPost
+
+                    if (result.status === 'success') {
+                        formStatus.textContent = result.message || 'Solicitação enviada com sucesso!';
+                        formStatus.className = 'mt-4 text-center text-sm text-green-600 dark:text-green-400';
+                        form.reset(); // Limpa os campos do formulário
+                        // Opcional: Recarregar os dados da tabela imediatamente ou após um delay
+                        setTimeout(() => {
+                            carregarDados(); // Atualiza a tabela com a nova solicitação
+                            formStatus.textContent = ''; // Limpa a mensagem de status
+                        }, 1500); // Espera 1.5 segundos
+
+                    } else {
+                        // Se o status retornado não for 'success', trata como erro
+                        throw new Error(result.message || 'Ocorreu um erro desconhecido no servidor.');
+                    }
+                } catch (error) {
+                    console.error('Erro detalhado ao enviar formulário:', error); // Mostra o erro completo na consola F12
+                    formStatus.textContent = `Erro ao enviar: ${error.message}. Verifique a consola (F12).`;
+                    formStatus.className = 'mt-4 text-center text-sm text-red-600 dark:text-red-400';
+                } finally {
+                    // Reativa o botão após um tempo, mesmo se der erro
+                     setTimeout(() => {
+                         if(formStatus.className.includes('text-green')) { // Só limpa se foi sucesso
+                             formStatus.textContent = '';
+                         }
+                         submitButton.disabled = false;
+                     }, 3000); // Espera 3 segundos no total
+                }
+            });
+        } else {
+             console.error("Erro: Elementos do formulário não encontrados no HTML.");
+        }
+
+        // --- INICIALIZAÇÃO ---
+        // Carrega os dados quando o HTML da página estiver completamente pronto
         document.addEventListener('DOMContentLoaded', carregarDados);
+
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
